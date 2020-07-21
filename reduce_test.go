@@ -16,6 +16,10 @@ func concat(accumulator, str string) string {
 	return fmt.Sprintf("%s %s", accumulator, str)
 }
 
+func invalidReduceFunc(accumulator, num int) (int, int) {
+	return accumulator + num, accumulator + num
+}
+
 type minMaxSum struct {
 	Min int
 	Max int
@@ -49,7 +53,7 @@ func TestReduceToString(t *testing.T) {
 	slice := []string{"I", "am", "so", "hungry"}
 
 	got := Reduce(slice, concat, "")
-	want := "I am so hungry"
+	want := " I am so hungry" //Notice the extra space
 
 	assert.Equal(t, want, got)
 }
@@ -76,5 +80,15 @@ func TestReduceWithInvalidFunc(t *testing.T) {
 
 	assert.Panics(t, func() { Reduce(slice, concat, "") }, "TestReduceWithInvalidFunc did not panic")
 	assert.Panics(t, func() { Reduce(slice, multiply, "") }, "TestReduceWithInvalidFunc did not panic")
+	assert.Panics(t, func() { Reduce(slice, invalidReduceFunc, 0) }, "TestReduceWithInvalidFunc did not panic")
 	assert.Panics(t, func() { Reduce(slice, "not a func", 0) }, "TestReduceWithInvalidFunc did not panic")
+}
+
+func TestReduceWithEmptySlice(t *testing.T) {
+	slice := []int{}
+
+	got := Reduce(slice, multiply, 1)
+	want := 1
+
+	assert.Equal(t, want, got)
 }
