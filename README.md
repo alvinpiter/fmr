@@ -106,6 +106,7 @@ The above code will output:
 ## Reduce
 
 ```
+func main() {
 	sliceInt := []int{1, 2, 3, 4, 5}
 
 	//Multiply all the numbers
@@ -129,7 +130,7 @@ The above code will output:
 	numbers := []int{10, 1, 5, 4, 3, 2, 7, 6, 9, 8}
 	mms := minMaxSum{1000, -1000, 0}
 
-	//Find min, max and sum of
+	//Find min, max and sum of numbers
 	fmt.Println(fmr.Reduce(numbers, func(accumulator minMaxSum, num int) minMaxSum {
 		if num < accumulator.Min {
 			accumulator.Min = num
@@ -143,6 +144,7 @@ The above code will output:
 
 		return accumulator
 	}, mms))
+}
 ```
 
 The above code will output:
