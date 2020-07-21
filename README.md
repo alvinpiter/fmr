@@ -1,3 +1,6 @@
+[![Documentation](https://godoc.org/github.com/alvinpiter/fmr?status.svg)](http://godoc.org/github.com/alvinpiter/fmr)
+[![Go Report Card](https://goreportcard.com/badge/github.com/alvinpiter/fmr)](https://goreportcard.com/report/github.com/alvinpiter/fmr)
+
 # fmr
 
 `fmr` is a package that provides Javascript's filter, map, and reduce implemented in Go.
