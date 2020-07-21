@@ -20,10 +20,10 @@ func parity(num int) string {
 	return "odd"
 }
 
-func sliceToPerson(slice []interface{}) person {
+func stringToPerson(name string) person {
 	return person{
-		name: slice[0].(string),
-		age:  slice[1].(int),
+		name: name,
+		age:  0,
 	}
 }
 
@@ -48,15 +48,12 @@ func TestMapToSliceOfStrings(t *testing.T) {
 }
 
 func TestMapToSliceOfStructs(t *testing.T) {
-	slice := []interface{}{
-		[]interface{}{"Alvin", 26},
-		[]interface{}{"Teddy", 23},
-	}
+	slice := []string{"Alvin", "Teddy"}
 
-	got := Map(slice, sliceToPerson)
+	got := Map(slice, stringToPerson)
 	want := []person{
-		person{name: "Alvin", age: 26},
-		person{name: "Teddy", age: 23},
+		person{name: "Alvin", age: 0},
+		person{name: "Teddy", age: 0},
 	}
 
 	assert.True(t, reflect.DeepEqual(got, want), fmt.Sprintf("TestMapToSliceOfStructs fails, got: %v, want: %v", got, want))
