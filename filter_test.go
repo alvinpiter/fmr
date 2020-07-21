@@ -85,11 +85,6 @@ func TestFilterWithInvalidFunc(t *testing.T) {
 	slice := []int{1, 2, 3, 4, 5}
 
 	assert.Panics(t, func() { Filter(slice, invalidFunc) }, "TestFilterWithInvalidFunc did not panic")
+	assert.Panics(t, func() { Filter(slice, isEvenLengthString) }, "TestFilterWithInvalidFunc did not panic")
 	assert.Panics(t, func() { Filter(slice, "not a func") }, "TestFilterWithInvalidFunc did not panic")
-}
-
-func TestFilterWithMismatchType(t *testing.T) {
-	slice := []int{1, 2, 3, 4, 5}
-
-	assert.Panics(t, func() { Filter(slice, isEvenLengthString) }, "TestFilterWithMismatchType did not panic")
 }

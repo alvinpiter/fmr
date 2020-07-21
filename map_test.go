@@ -69,11 +69,6 @@ func TestMapWithInvalidFunc(t *testing.T) {
 	slice := []int{1, 2, 3, 4, 5}
 
 	assert.Panics(t, func() { Map(slice, invalidFunc) }, "TestMapWithInvalidFunc did not panic")
+	assert.Panics(t, func() { Map(slice, stringToPerson) }, "TestMapWithInvalidFunc did not panic")
 	assert.Panics(t, func() { Map(slice, "not a func") }, "TestMapWithInvalidFunc did not panic")
-}
-
-func TestMapWithMismatchType(t *testing.T) {
-	slice := []string{"string1", "string2"}
-
-	assert.Panics(t, func() { Map(slice, parity) }, "TestMapWithMismatchType did not panic")
 }
